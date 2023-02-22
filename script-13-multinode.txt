@@ -1,24 +1,25 @@
 pipeline {
 
-agent {
+        agent {
 			label{
-						label 'built-in'
+			        label 'built-in'
 			}
-}
+        }
 
-stages{
+        stages{
+			
 			stage ('install-tree'){
-								steps{
-											sh "yum install tree -y"
-								}
+			    steps{
+					sh "yum install tree -y"
+				}
 			}
 			
 			stage ('install-soft-on-172.31.7.193'){
-			agent {
+			    agent {
 						label {
-									label "172.31.7.193"
+							label "172.31.7.193"
 						}
-			}
+		    	}
 								steps {
 										sh "sudo yum install httpd -y"
 										sh "sudo yum install tree -y"
@@ -26,15 +27,15 @@ stages{
 			}
 			
 			stage ('install-soft-on-172.31.15.170'){
-			agent {
+			    agent {
 						label {
-									label "172.31.15.170"
+							label "172.31.15.170"
 						}
-			}
+			    }
 								steps {
 										sh "sudo yum install httpd -y"
 										sh "sudo yum install tree -y"
 								}
 			}
-}
-}
+        }
+    }
